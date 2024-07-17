@@ -40,7 +40,7 @@ const employee = new Employee("John Smith");
 employee.displayInfo();
 
 const manager = new Manager("Jane Doe", "Sales");
-manager.displayInfo(); 
+manager.displayInfo();
 
 /** Задание 2: "Управление списком заказов"
 
@@ -89,11 +89,9 @@ class Order {
   }
 
   getTotalPrice() {
-    let counter = 0;
-    this.products.forEach((product) => {
-        counter += product.price * product.quantity
-    })
-    return `Total price: ${counter}`;
+    return this.products.reduce((total, product) => {
+      return total + product.price * product.quantity;
+    }, 0);
   }
 }
 
@@ -105,7 +103,7 @@ order.addProduct(product1);
 const product2 = new Product("Headphones", 100, 2);
 order.addProduct(product2);
 
-console.log(order.getTotalPrice()); 
+console.log(order.getTotalPrice());
 
 //проверка соответствия передаваемого объекта
 const product3 = {};
